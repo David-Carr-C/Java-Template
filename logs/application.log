@@ -1,0 +1,31 @@
+18:33:15.491 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+18:33:24.172 [restartedMain] INFO  com.example.Main - Starting Main using Java 21.0.1 with PID 45925 (/home/david-carrillo/Documentos/spring/target/classes started by david-carrillo in /home/david-carrillo/Documentos/spring)
+18:33:24.173 [restartedMain] DEBUG com.example.Main - Running with Spring Boot v3.2.0, Spring v6.1.1
+18:33:24.174 [restartedMain] INFO  com.example.Main - The following 1 profile is active: "desarrollo"
+18:33:24.310 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+18:33:24.311 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+18:33:25.094 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+18:33:25.175 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 74 ms. Found 2 JPA repository interfaces.
+18:33:25.849 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+18:33:25.894 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1582 ms
+18:33:26.318 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+18:33:27.535 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+18:33:27.830 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+18:33:27.858 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ca1c7d20-23fa-4207-b064-f2cd531d4610
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+18:33:28.100 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@15d94b7b, org.springframework.security.web.session.ForceEagerSessionCreationFilter@6b8969be, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7e6c466e, org.springframework.security.web.context.SecurityContextHolderFilter@4e9524bf, org.springframework.security.web.header.HeaderWriterFilter@19d06561, org.springframework.web.filter.CorsFilter@6dca8af, org.springframework.security.web.csrf.CsrfFilter@4691c765, org.springframework.security.web.authentication.logout.LogoutFilter@7b0007fe, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@152402ad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a9c2b5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5981b99c, org.springframework.security.web.session.SessionManagementFilter@79528585, org.springframework.security.web.access.ExceptionTranslationFilter@4f98189f, org.springframework.security.web.access.intercept.AuthorizationFilter@36d90ef0]
+18:33:28.297 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+18:33:28.323 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/api'
+18:33:28.331 [restartedMain] INFO  com.example.Main - Started Main in 4.468 seconds (process running for 4.923)
+18:40:44.925 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+18:40:44.927 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+18:40:44.941 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/user' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+18:40:44.955 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/api/user' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+18:40:44.974 [http-nio-8080-exec-1] DEBUG c.example.controller.UserController - getUsers() called
+18:40:47.957 [http-nio-8080-exec-2] DEBUG c.example.controller.UserController - getUser() called
+18:40:50.630 [http-nio-8080-exec-3] DEBUG c.example.controller.UserController - getUsers() called
+18:45:45.050 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
