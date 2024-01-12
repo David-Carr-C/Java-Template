@@ -5,6 +5,7 @@ import com.example.dto.mapper.UserDTOMapper;
 import com.example.entity.RoleEntity;
 import com.example.entity.UserEntity;
 import com.example.enums.ERole;
+import com.example.exception.UserException;
 import com.example.repository.IUserRepository;
 import com.example.service.IUserService;
 import lombok.Builder;
@@ -33,7 +34,10 @@ public class UserService implements IUserService {
         log.debug("Getting all users");
         Stream<UserEntity> streamUsers = StreamSupport.stream(userRepository.findAll().spliterator(), false);
         return streamUsers
-                .peek(user -> user.setUsername(user.getUsername().toUpperCase())).collect(Collectors.toList());
+                .peek(user -> {
+                    if (user.getUsername() != null) user.setUsername(user.getUsername().toUpperCase());
+                    if (user.getPassword() != null) user.setPassword("**********");
+                }).collect(Collectors.toList());
     }
 
     @Override
@@ -43,7 +47,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public String postUser(UserDTO userDTO) {
+    public UserEntity postUser(UserDTO userDTO) {
         log.debug("Creating user: {}", userDTO);
         Set<RoleEntity> roles = userDTO
                 .getRoles()
@@ -62,16 +66,34 @@ public class UserService implements IUserService {
                 .roles(roles)
                 .build();
 
+        log.debug("Saving user: {}", userEntity);
         userRepository.save(userEntity);
 
-        return "Usuario creado";
+        return userEntity;
     }
 
     @Override
-    public UserEntity putUser(UserDTO userDTO) {
+    public UserEntity putUser(Long id, UserDTO userDTO)  throws UserException{
         log.debug("Updating user: {}", userDTO);
+        if (!userRepository.existsById(id)) throw new UserException("El usuario no existe", "No se encontro registro del usuario con id: " + id);
+
         UserEntity userEntity = UserDTOMapper.toUser(userDTO);
+
+        Set<RoleEntity> roles = userDTO
+                .getRoles()
+                .stream()
+                .map(role -> RoleEntity
+                        .builder()
+                        .role(ERole.valueOf(role))
+                        .build())
+                .collect(Collectors.toSet());
+
+        userEntity.setRoles(roles);
+        userEntity.setId(id);
+
+        log.debug("Saving user: {}", userEntity);
         userRepository.save(userEntity);
+
         return userEntity;
     }
 
