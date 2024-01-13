@@ -26,11 +26,11 @@ public class UserEntity {
     @GeneratedValue(strategy = IDENTITY) // delega la generación de la clave primaria a la base de datos
     private Long id;
 
-    @Email // valida que el campo sea un email con regex: https://www.baeldung.com/java-email-validation-regex
     @NotBlank
     @Size(max = 80) // max = 255 characters
     private String username;
 
+    @Email // valida que el campo sea un email con regex: https://www.baeldung.com/java-email-validation-regex
     @NotBlank
     @Size(max = 30)
     private String email;

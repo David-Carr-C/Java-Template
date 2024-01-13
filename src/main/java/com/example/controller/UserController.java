@@ -1,7 +1,9 @@
 package com.example.controller;
 
+import com.example.domain.HttpResponse;
 import com.example.dto.UserDTO;
 import com.example.entity.UserEntity;
+import com.example.exception.UserException;
 import com.example.service.implementation.UserService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -9,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import static java.util.Map.*;
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("/user")
@@ -33,15 +38,28 @@ public class UserController {
     }
 
     @PostMapping()
-    public ResponseEntity<String> postUser(@Valid @RequestBody UserDTO userDTO) {
+    public ResponseEntity<HttpResponse> postUser(@Valid @RequestBody UserDTO userDTO) {
         logger.debug("postUser() called");
-        return userService.postUser(userDTO);
+        var data = userService.postUser(userDTO);
+        return ResponseEntity.ok(HttpResponse.getHttpResponse(of("user", data), "Usuario Creado", CREATED));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpResponse> putUser(@PathVariable Long id, @Valid @RequestBody UserDTO userDTO) {
+        logger.debug("putUser() called");
+        try {
+            var data = userService.putUser(id, userDTO);
+            return ResponseEntity.ok(HttpResponse.getHttpResponse(of("user", data), "Usuario Actualizado", OK));
+        } catch (UserException e) {
+            return new ResponseEntity<>(HttpResponse.getErrorHttpResponse(e.getMessage(), e.getReason(), e.getDeveloperMessage(), e.getStackTrace(), BAD_REQUEST), BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteUser(@PathVariable Long id) {
+    public ResponseEntity<HttpResponse> deleteUser(@PathVariable Long id) {
         logger.debug("deleteUser() called");
-        return userService.deleteUser(id);
+        var data = userService.deleteUser(id);
+        return ResponseEntity.ok(HttpResponse.getHttpResponse(of("message", data), data, OK));
     }
 }
 
