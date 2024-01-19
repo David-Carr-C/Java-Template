@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface IUserRepository<T extends UserEntity> extends CrudRepository<T, Long> {
 
-    // selecciona u de la clase UserEntity donde u.username = primer parametro
+//    Selecciona u de la clase UserEntity donde u.username = primer parametro
 //    @Query("SELECT u FROM UserEntity u WHERE u.username = ?1")
 //    Optional<T> username(String username); // necesita una Query no sigue convencion
 

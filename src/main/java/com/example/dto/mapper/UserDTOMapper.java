@@ -17,3 +17,9 @@ public class UserDTOMapper {
         return userEntity;
     }
 }
+
+/**
+ * Esta clase se encarga de copiar los datos de la entidad UserEntity a la clase UserDTO y viceversa.
+ * Para ello, se utiliza la clase BeanUtils de Spring, que permite copiar los atributos de una clase a otra.
+ * En este caso, se copian los atributos de la entidad UserEntity a la clase UserDTO y viceversa.
+ */
